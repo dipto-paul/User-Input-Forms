@@ -9,6 +9,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
   final formKey = GlobalKey<FormState>();
+  bool isChecked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -90,8 +91,24 @@ class _HomeScreenState extends State<HomeScreen> {
               obscureText: true, // eita dile txt dekha jabe nah
             ),
 
-            SizedBox(height: 30),
+           SizedBox(height: 30),
+            // for checkBox
+            Row(
+              children: [
+                Checkbox(
+                    value: isChecked, onChanged: (value){
+                      setState(() {
+                        isChecked = value!;
+                      });
 
+                }),
+                Container(
+                  child: Text("I agree to the terms and conditions", style: TextStyle(fontSize: 18, color: Colors.black),),
+                )
+                
+              ],
+            ),
+            
             FilledButton(onPressed: (
                 ) {
               if (!formKey.currentState!.validate()){
