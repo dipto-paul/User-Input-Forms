@@ -14,8 +14,14 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             Padding(padding: EdgeInsets.only(bottom: 15)),
-            TextField(
+            TextFormField(
               onTapOutside: (_) => FocusScope.of(context).unfocus(),// bahire clck korle Chere dibe
+              validator: (value) {
+                if(value == null || value.isEmpty){
+                  return "Please Enter Your Name";
+                }
+                return null;
+              },
               decoration: InputDecoration(
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                 labelText: "Enter Your Name",
@@ -28,7 +34,8 @@ class HomeScreen extends StatelessWidget {
             ),
 
             Padding(padding: EdgeInsets.only(bottom: 15)),
-            TextField(
+            TextFormField(
+              onTapOutside: (_) => FocusScope.of(context).unfocus(),
               decoration: InputDecoration(
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                 labelText: "Enter Your Email",
@@ -39,7 +46,8 @@ class HomeScreen extends StatelessWidget {
             ),
 
             Padding(padding: EdgeInsets.only(bottom: 15)),
-            TextField(
+            TextFormField(
+              onTapOutside: (_) => FocusScope.of(context).unfocus(),
               decoration: InputDecoration(
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                 labelText: "Enter Your Password",
