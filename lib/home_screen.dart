@@ -57,6 +57,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 );
 
                 if (!emailRegex.hasMatch(value)) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text("Please enter a valid email"),
+                    duration: Duration(seconds: 3),
+                    ),
+                  );
                   return "Please enter a valid email";
                 }
 
