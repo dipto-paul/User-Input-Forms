@@ -10,6 +10,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final formKey = GlobalKey<FormState>();
   bool isChecked = false;
+  bool forSwitch = false;
 
   @override
   Widget build(BuildContext context) {
@@ -104,8 +105,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 }),
                 Container(
                   child: Text("I agree to the terms and conditions", style: TextStyle(fontSize: 18, color: Colors.black),),
-                )
-                
+                ),
+              ],
+            ),
+
+            SizedBox(height: 20,),
+
+            Row(
+              children: [
+                Text("Enable Notification "),
+                Switch(value: forSwitch, onChanged: (value){
+                  setState(() {
+                    forSwitch = value;
+                  });
+                },
+                ),
               ],
             ),
             
