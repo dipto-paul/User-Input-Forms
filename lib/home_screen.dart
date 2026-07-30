@@ -93,23 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
 
            SizedBox(height: 30),
-            // for checkBox
-            Row(
-              children: [
-                Checkbox(
-                    value: isChecked, onChanged: (value){
-                      setState(() {
-                        isChecked = value!;
-                      });
 
-                }),
-                Container(
-                  child: Text("I agree to the terms and conditions", style: TextStyle(fontSize: 18, color: Colors.black),),
-                ),
-              ],
-            ),
-
-            SizedBox(height: 20,),
 
             Row(
               children: [
@@ -122,7 +106,45 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-            
+
+            SizedBox(height: 20,),
+
+            DropdownButtonFormField<String>(
+
+              decoration: InputDecoration(
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                fillColor: Colors.grey,
+                labelText: "Select an Item",
+                hint: Text("Option"),
+              ),
+              items: [
+                DropdownMenuItem(value: "Option1", child: Text("Option 1")),
+                DropdownMenuItem(value: "Option2", child: Text("Option 2")),
+                DropdownMenuItem(value: "Option3", child: Text("Option 3")),
+              ], onChanged: (String? value) {
+                print("Selected valus is : $value");
+            },
+            ),
+            SizedBox(height: 20,),
+            // for checkBox
+            Row(
+              children: [
+                Checkbox(
+                    value: isChecked, onChanged: (value){
+                  setState(() {
+                    isChecked = value!;
+                  });
+
+                }),
+                Container(
+                  child: Text("I agree to the terms and conditions", style: TextStyle(fontSize: 18, color: Colors.black),),
+                ),
+              ],
+            ),
+
+
+            SizedBox(height: 25,),
+
             FilledButton(onPressed: (
                 ) {
               if (!formKey.currentState!.validate()){
