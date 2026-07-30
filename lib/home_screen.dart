@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 import 'dashboard.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+
+  final formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,12 +17,14 @@ class HomeScreen extends StatelessWidget {
         title: Text("Please Login ", textAlign: TextAlign.center,),
         backgroundColor: Colors.blue,
       ),
-      body: Container(
-        padding: EdgeInsets.all(15),
+      body: Form(
+        key: formKey,
+        //padding: EdgeInsets.all(15),
         child: Column(
           children: [
             Padding(padding: EdgeInsets.only(bottom: 15)),
             TextFormField(
+
               onTapOutside: (_) => FocusScope.of(context).unfocus(),// bahire clck korle Chere dibe
               validator: (value) {
                 if(value == null || value.isEmpty){
@@ -36,6 +46,23 @@ class HomeScreen extends StatelessWidget {
             Padding(padding: EdgeInsets.only(bottom: 15)),
             TextFormField(
               onTapOutside: (_) => FocusScope.of(context).unfocus(),
+
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return "Please enter your email";
+                }
+
+                final emailRegex = RegExp(
+                  r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                );
+
+                if (!emailRegex.hasMatch(value)) {
+                  return "Please enter a valid email";
+                }
+
+                return null;
+              },
+
               decoration: InputDecoration(
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                 labelText: "Enter Your Email",
@@ -59,9 +86,12 @@ class HomeScreen extends StatelessWidget {
             ),
 
             SizedBox(height: 30),
-            
+
             FilledButton(onPressed: (
                 ) {
+              if (!formKey.currentState!.validate()){
+                return;
+              }
               Navigator.push(context, MaterialPageRoute(builder: (context) => DashboardScreen()));
             },
                 style: FilledButton.styleFrom(
