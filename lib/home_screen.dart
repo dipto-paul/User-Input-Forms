@@ -15,6 +15,7 @@ class HomeScreen extends StatelessWidget {
           children: [
             Padding(padding: EdgeInsets.only(bottom: 15)),
             TextField(
+              onTapOutside: (_) => FocusScope.of(context).unfocus(),// bahire clck korle Chere dibe
               decoration: InputDecoration(
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                 labelText: "Enter Your Name",
