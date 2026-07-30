@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dashboard.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -50,7 +51,10 @@ class HomeScreen extends StatelessWidget {
 
             SizedBox(height: 30),
             
-            FilledButton(onPressed: () {},
+            FilledButton(onPressed: (
+                ) {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => DashboardScreen()));
+            },
                 style: FilledButton.styleFrom(
                   backgroundColor: Colors.lightBlueAccent,
                   padding: EdgeInsets.all(16),
