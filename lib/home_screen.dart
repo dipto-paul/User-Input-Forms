@@ -19,6 +19,9 @@ class HomeScreen extends StatelessWidget {
                 labelText: "Enter Your Name",
                 hintText: "ex: Dipto Paul",
                 prefixIcon: Icon(Icons.person),
+                filled: true,
+                fillColor: Colors.greenAccent,
+
               ),
             ),
 
@@ -28,6 +31,7 @@ class HomeScreen extends StatelessWidget {
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                 labelText: "Enter Your Email",
                 hintText: "ex: diptopaul.contact@gmail.com",
+                helperText: "Please Enter Your Email",
                 prefixIcon: Icon(Icons.email),
               ),
             ),
@@ -38,15 +42,25 @@ class HomeScreen extends StatelessWidget {
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                 labelText: "Enter Your Password",
                 //hintText: "ex: Dipto Paul",
+                helperText: "Please Enter Your Correct Password",
                 prefixIcon: Icon(Icons.password),
               ),
               obscureText: true, // eita dile txt dekha jabe nah
             ),
 
             SizedBox(height: 30),
-            ElevatedButton(onPressed: (){}, child: Text("Login",style: TextStyle( fontSize: 20, fontWeight: FontWeight.bold,color:Colors.black,)),
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.blue,),
-            ),
+            
+            FilledButton(onPressed: () {},
+                style: FilledButton.styleFrom(
+                  backgroundColor: Colors.lightBlueAccent,
+                  padding: EdgeInsets.all(16),
+                  minimumSize: Size(double.infinity, 48),
+                  textStyle: TextStyle(fontSize: 20),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                child: Text("Login")),
           ],
         ),
       ),
